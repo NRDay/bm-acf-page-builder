@@ -1,0 +1,85 @@
+
+//Options Modal
+.acf-pb-options-modal-triggers {
+    a {
+        text-decoration: none;
+        background: none;
+        .acf-icon {
+            margin-left: 5px;
+            background: none;
+            border: none;
+            color: white;
+            margin-top: 5px
+        }  
+    }
+}
+
+.acf-pb-options-modal {
+    display: none;
+    &.modal-active {
+        display: block;
+        z-index: 200070;
+        position: fixed !important;
+        background: white;
+        position: fixed;
+        top: 50px;
+        bottom: 50px;
+        left: 50px;
+        right: 50px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+        overflow: hidden;
+        .modal-header {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 0.5rem;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            z-index: 200071;
+            .modal-label {
+                line-height: 29px;
+                float: left;
+                font-size: 1rem;
+                font-weight: bold;
+                position: relative;
+            }
+            .modal-close {
+                float: right;
+                position: relative;
+            }
+        }
+        .modal-inner {
+            z-index: 200071;
+            position: absolute;
+            background: white;
+            top: 47px;
+            bottom: 42px;
+            left: 0;
+            right: 0;
+            overflow: scroll;
+            padding:  10px;
+        }
+    }
+}
+
+.acf-fc-popup {
+    background: #2F353E;
+    border-radius: 5px;
+    color: #fff;
+    padding: 7px 0;
+    position: absolute;
+    font-size: 13px;
+    z-index: 999999 !important;
+    min-width: 135px;
+}
+
+.acf-tooltip.-confirm {
+    z-index: 999999;
+}
+
+.mce-panel.mce-menu {
+    border: 1px solid #ddd;
+    z-index: 999999 !important;
+}
