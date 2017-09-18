@@ -109,7 +109,6 @@ class Bm_Acf_Page_Builder_Admin {
 		
 		// include
 		include_once('acf/fields/acf-responsive_options-v5.php');
-		include_once('acf/fields/acf-section_options-v5.php');
 		include_once('acf/fields/acf-section_styles-v5.php');
 
 	}

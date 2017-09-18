@@ -33,20 +33,44 @@ if ( !class_exists('acf_field_section_styles') ) :
 			);
 
 			$this->defaults = array(
-				'margin_top'			=> '0',
-				'margin_right'			=> '0',
-				'margin_bottom'			=> '0',
-				'margin_left'			=> '0',
-				'border_top'			=> '0',
-				'border_right'			=> '0',
-				'border_bottom'			=> '0',
-				'border_left'			=> '0',
-				'border_style'			=> 'solid',
-				'padding_top'			=> '0',
-				'padding_right'			=> '0',
-				'padding_bottom'		=> '0',
-				'padding_left'			=> '0',
-				'background_style'		=> 'default',
+
+				//desktop
+				'desktop_margin_top'			=> '0',
+				'desktop_margin_right'			=> '0',
+				'desktop_margin_bottom'			=> '0',
+				'desktop_margin_left'			=> '0',
+				'desktop_padding_top'			=> '0',
+				'desktop_padding_right'			=> '0',
+				'desktop_padding_bottom'		=> '0',
+				'desktop_padding_left'			=> '0',
+
+				//tablet
+				'tablet_margin_top'				=> '0',
+				'tablet_margin_right'			=> '0',
+				'tablet_margin_bottom'			=> '0',
+				'tablet_margin_left'			=> '0',
+				'tablet_padding_top'			=> '0',
+				'tablet_padding_right'			=> '0',
+				'tablet_padding_bottom'			=> '0',
+				'tablet_padding_left'			=> '0',
+	
+				//mobile	
+				'mobile_margin_top'				=> '0',
+				'mobile_margin_right'			=> '0',
+				'mobile_margin_bottom'			=> '0',
+				'mobile_margin_left'			=> '0',
+				'mobile_padding_top'			=> '0',
+				'mobile_padding_right'			=> '0',
+				'mobile_padding_bottom'			=> '0',
+				'mobile_padding_left'			=> '0',
+	
+				'border_top'					=> '0',
+				'border_right'					=> '0',
+				'border_bottom'					=> '0',
+				'border_left'					=> '0',
+				'border_style'					=> 'solid',
+						
+				'background_style'				=> 'default',
 			);
 
 			$this->border_options = apply_filters( 'acf_section_styles_border_options', array(
@@ -334,20 +358,49 @@ if ( !class_exists('acf_field_section_styles') ) :
 
 			// if values are empty fetch defaults
 			if ( empty( $field['value'] ) ) {
-				$field['value']['margin_top'] = $field['margin_top'];
-				$field['value']['margin_right'] = $field['margin_right'];
-				$field['value']['margin_bottom'] = $field['margin_bottom'];
-				$field['value']['margin_left'] = $field['margin_left'];
+
+				//desktop
+				$field['value']['desktop_margin_top'] = $field['desktop_margin_top'];
+				$field['value']['desktop_margin_right'] = $field['desktop_margin_right'];
+				$field['value']['desktop_margin_bottom'] = $field['desktop_margin_bottom'];
+				$field['value']['desktop_margin_left'] = $field['desktop_margin_left'];
+
+				$field['value']['desktop_padding_top'] = $field['desktop_padding_top'];
+				$field['value']['desktop_padding_right'] = $field['desktop_padding_right'];
+				$field['value']['desktop_padding_bottom'] = $field['desktop_padding_bottom'];
+				$field['value']['desktop_padding_left'] = $field['desktop_padding_left'];
+
+				//tablet
+				$field['value']['tablet_margin_top'] = $field['tablet_margin_top'];
+				$field['value']['tablet_margin_right'] = $field['tablet_margin_right'];
+				$field['value']['tablet_margin_bottom'] = $field['tablet_margin_bottom'];
+				$field['value']['tablet_margin_left'] = $field['tablet_margin_left'];
+
+				$field['value']['tablet_padding_top'] = $field['tablet_padding_top'];
+				$field['value']['tablet_padding_right'] = $field['tablet_padding_right'];
+				$field['value']['tablet_padding_bottom'] = $field['tablet_padding_bottom'];
+				$field['value']['tablet_padding_left'] = $field['tablet_padding_left'];
+
+				//mobile
+				$field['value']['desktop_margin_top'] = $field['desktop_margin_top'];
+				$field['value']['desktop_margin_right'] = $field['desktop_margin_right'];
+				$field['value']['desktop_margin_bottom'] = $field['desktop_margin_bottom'];
+				$field['value']['desktop_margin_left'] = $field['desktop_margin_left'];
+
+				$field['value']['desktop_padding_top'] = $field['desktop_padding_top'];
+				$field['value']['desktop_padding_right'] = $field['desktop_padding_right'];
+				$field['value']['desktop_padding_bottom'] = $field['desktop_padding_bottom'];
+				$field['value']['desktop_padding_left'] = $field['desktop_padding_left'];
+
+				//border
 				$field['value']['border_top'] = $field['border_top'];
 				$field['value']['border_right'] = $field['border_right'];
 				$field['value']['border_bottom'] = $field['border_bottom'];
 				$field['value']['border_left'] = $field['border_left'];
 				$field['value']['border_color'] = $field['border_color'];
 				$field['value']['border_style'] = $field['border_style'];
-				$field['value']['padding_top'] = $field['padding_top'];
-				$field['value']['padding_right'] = $field['padding_right'];
-				$field['value']['padding_bottom'] = $field['padding_bottom'];
-				$field['value']['padding_left'] = $field['padding_left'];
+
+				//background
 				$field['value']['background_color'] = $field['background_color'];
 				$field['value']['background_style'] = $field['background_style'];
 				}
@@ -357,181 +410,227 @@ if ( !class_exists('acf_field_section_styles') ) :
 			</div>
 			<div class="acf-section-styles-container" tabindex="-1">
 				<div id="response-modal" class="acf-pb-options-modal">
-					<div class="modal-header"><span class="modal-label">Column Options</span><div class="modal-close"><span class="screen-reader-text">Close</span><span class="tb-close-icon"></span></div></div>
-						<div class="modal-inner">
-			
-
-							<!-- Box Model -->
-							<div class="acf-section-styles-box-model">
-								<div class="acf-section-styles-margin acf-section-style-param">
-									<!-- Margin -->
-									<div class="acf-label">
-										<label for="<?php echo $field['id']; ?>_margin"><?php _e( 'margin', 'acf-section_styles' ); ?></label>
-									</div>
-
-									<input id="<?php echo $field['id']; ?>_margin" class="top" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[margin_top]" value="<?php if ( !empty( $field['value']['margin_top'] ) ) echo $field['value']['margin_top']; ?>" />
-									<input class="right" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[margin_right]" value="<?php if ( !empty( $field['value']['margin_top'] ) ) echo $field['value']['margin_right']; ?>" />
-									<input class="bottom" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[margin_bottom]" value="<?php if ( !empty( $field['value']['margin_top'] ) ) echo $field['value']['margin_bottom']; ?>" />
-									<input class="left" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[margin_left]" value="<?php if ( !empty( $field['value']['margin_top'] ) ) echo $field['value']['margin_left']; ?>" />
-									<!-- End Margin -->
-
-									<div id="<?php echo $field['id']; ?>_border_container" class="acf-section-styles-border acf-section-style-param"<?php if ( !empty( $field['value']['border_color'] ) ) echo ' style="background-color: ' . $field['value']['border_color'] . '"'; ?>>
-										<!-- Border -->
-										<div class="acf-label">
-											<label for="<?php echo $field['id']; ?>_border"><?php _e( 'border', 'acf-section_styles' ); ?></label>
-										</div>
-
-										<input  id="<?php echo $field['id']; ?>_border" class="top" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[border_top]" value="<?php if ( !empty( $field['value']['border_top'] ) ) echo $field['value']['border_top']; ?>" />
-										<input class="right" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[border_right]" value="<?php if ( !empty( $field['value']['border_right'] ) ) echo $field['value']['border_right']; ?>" />
-										<input class="bottom" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[border_bottom]" value="<?php if ( !empty( $field['value']['border_bottom'] ) ) echo $field['value']['border_bottom']; ?>" />
-										<input class="left" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[border_left]" value="<?php if ( !empty( $field['value']['border_left'] ) ) echo $field['value']['border_left']; ?>" />
-										<!-- End Border -->
-
-										<div id="<?php echo $field['id']; ?>_padding_container" class="acf-section-styles-padding acf-section-style-param"<?php if ( !empty( $field['value']['background_color'] ) ) echo ' style="background-color: ' . $field['value']['background_color'] . '"'; ?>>
-											<!-- Padding -->
-												<div class="acf-label">
-													<label for="<?php echo $field['id']; ?>_padding"><?php _e( 'padding', 'acf-section_styles' ); ?></label>
-												</div>
-
-												<input  id="<?php echo $field['id']; ?>_padding" class="top" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[padding_top]" value="<?php if ( !empty( $field['value']['padding_top'] ) ) echo $field['value']['padding_top']; ?>" />
-												<input class="right" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[padding_right]" value="<?php if ( !empty( $field['value']['padding_right'] ) ) echo $field['value']['padding_right']; ?>" />
-												<input class="bottom" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[padding_bottom]" value="<?php if ( !empty( $field['value']['padding_bottom'] ) ) echo $field['value']['padding_bottom']; ?>" />
-												<input class="left" placeholder="&ndash;" min="0" name="<?php echo esc_attr($field['name']) ?>[padding_left]" value="<?php if ( !empty( $field['value']['padding_left'] ) ) echo $field['value']['padding_left']; ?>" />
-												<!-- End Padding -->
-
-										</div> <!-- End .acf-section-styles-padding -->
-
-									</div> <!-- End .acf-section-styles-border -->
-
-								</div> <!-- End .acf-section-styles-margin -->
-
-							</div>
-							<!-- End Box Model -->
-
-							<!-- Style Options -->
-							<div class="acf-section-styles-options">
-
-								<div class="acf-section-styles-input-row">
-									<div class="acf-section-styles-input-col-half">
-										<!-- Border Style -->
-										<div class="acf-section-styles-border-style-container">
-											<div class="acf-label">
-												<label for= ""><?php _e( 'Border Style', 'acf-section_styles' ); ?></label>
-											</div>
-
-											<select id="<?php echo $field['id']; ?>_border_style" name="<?php echo esc_attr($field['name']) ?>[border_style]">
-												<?php foreach ( $this->border_options as $v => $label ): ?>
-												<option value="<?php echo $v; ?>"<?php if ( !empty( $field['value']['border_style'] ) && $field['value']['border_style'] == $v ) echo ' selected'; ?>><?php echo $label; ?></option>
-												<?php endforeach; ?>
-											</select>
-										</div>
-										<!-- End Border Style -->
-									</div>
-									<div class="acf-section-styles-input-col-half">
-										<!-- Border Color -->
-										<div class="acf-section-styles-border-color-container">
-											<div class="acf-label">
-												<label for= "<?php echo $field['id']; ?>_border_color"><?php _e( 'Border Color', 'acf-section_styles' ); ?></label>
-											</div>
-											<input class="acf-section-styles-border-color" name="<?php echo esc_attr($field['name']) ?>[border_color]" id="<?php echo $field['id']; ?>_border_color" type="text" value="<?php if ( !empty( $field['value']['border_color'] ) ) echo $field['value']['border_color']; ?>" />
-										</div>
-										<!-- End Border Color -->
-									</div>
-								</div>
-
-								<!-- Background Color -->
-								<div class="acf-section-styles-background-color-container">
-									<div class="acf-label">
-										<label for= "<?php echo $field['id']; ?>_background_color"><?php _e( 'Background Color', 'acf-section_styles' ); ?></label>
-									</div>
-									<input class="acf-section-styles-background-color" name="<?php echo esc_attr($field['name']) ?>[background_color]" id="<?php echo $field['id']; ?>_background_color" type="text" value="<?php if ( !empty( $field['value']['background_color'] ) ) echo $field['value']['background_color']; ?>" />
-								</div>
-								<!-- End Background Color -->
-
-								<!-- Background Image -->
-								<?php
-								$div = array(
-									'class'	=> 'acf-section-styles-background-image-container',
-								);
-
-								$url = '';
-
-								if ( !empty( $field['value']['background_image'] ) ) {
-
-									// update vars
-									$attachment = wp_get_attachment_image_src($field['value']['background_image'], 'medium');
-
-									// url exists
-									if ( $attachment ) {
-										$url = $attachment[0];
-										$div['class'] .= ' has-value';
-									}
-								}
-								?>
-								<div <?php acf_esc_attr_e( $div ); ?>>
-									<div class="acf-label">
-										<label for="<?php echo $field['id']; ?>_background_image"><?php _e( 'Background Image', 'acf-section_styles' ); ?></label>
-									</div>
-
-									<input type="hidden" id="<?php echo $field['id']; ?>_background_image" name="<?php echo esc_attr($field['name']) ?>[background_image]" value="<?php if ( !empty( $field['value']['background_image'] ) ) echo $field['value']['background_image']; ?>" class="acf-section-styles-background-image-input" />
-
-									<div class="view show-if-value">
-										<div class="acf-section-styles-background-image-preview-container"<?php if ( !empty( $field['value']['background_color'] ) ) echo ' style="background-color: ' . $field['value']['background_color'] . '"'; ?>>
-											<img id="<?php echo $field['id']; ?>_background_image_preview" src="<?php echo $url; ?>" alt="" class="acf-section-styles-background-image-preview" />
-										</div>
-
-										<p style="margin: 5px 0 0;"><a href="#" class="acf-section-styles-background-image-remove" data-target="<?php echo $field['id']; ?>"><?php _e( 'Remove selected image', 'acf-section_styles' ); ?></a></p>
-
-										<div class="acf-section-styles-background-style-container">
-											<div class="acf-label">
-												<label for="<?php echo $field['id']; ?>_background_style"><?php _e( 'Background Style', 'acf-section_styles' ); ?></label>
-											</div>
-
-											<select id="<?php echo $field['id']; ?>_background_style" name="<?php echo esc_attr($field['name']) ?>[background_style]">
-												<?php foreach ( $this->background_style_options as $v => $label ): ?>
-												<option value="<?php echo $v; ?>"<?php if ( !empty( $field['value']['background_style'] ) && $field['value']['background_style'] == $v ) echo ' selected'; ?>><?php echo $label; ?></option>
-												<?php endforeach; ?>
-											</select>
-										</div>
-
-										<div class="acf-section-styles-background-position-container">
-											<div class="acf-label">
-												<label for="<?php echo $field['id']; ?>_background_position_1"><?php _e( 'Background Position', 'acf-section_styles' ); ?></label>
-											</div>
-
-											<div class="acf-section-styles-input-row">
-												<div class="acf-section-styles-input-col-half">
-													<select id="<?php echo $field['id']; ?>_background_position_1" name="<?php echo esc_attr($field['name']) ?>[background_position_1]" >
-														<?php foreach ( $this->background_position_options_1 as $v => $label ): ?>
-														<option value="<?php echo $v; ?>"<?php if ( !empty( $field['value']['background_position_1'] ) && $field['value']['background_position_1'] == $v ) echo ' selected'; ?>><?php echo $label; ?></option>
-														<?php endforeach; ?>
-													</select>
-												</div>
-												<div class="acf-section-styles-input-col-half">
-													<select id="<?php echo $field['id']; ?>_background_position_2" name="<?php echo esc_attr($field['name']) ?>[background_position_2]" class="acf-section-styles-background-position-1">
-														<?php foreach ( $this->background_position_options_2 as $v => $label ): ?>
-														<option value="<?php echo $v; ?>"<?php if ( !empty( $field['value']['background_position_2'] ) && $field['value']['background_position_2'] == $v ) echo ' selected'; ?>><?php echo $label; ?></option>
-														<?php endforeach; ?>
-													</select>
-												</div>
-											</div>
-										</div>
-
-									</div>
-
-									<div class="view hide-if-value">
-										<p style="margin: 0;"><?php _e( 'No image selected','acf-section_styles' ); ?> <a data-target="<?php echo $field['id']; ?>" class="acf-button button acf-section-styles-background-image-select" href="#"><?php _e( 'Add Image','acf-section_styles' ); ?></a></p>
-									</div>
-
-								</div>
-								<!-- End Background Image -->
-
-							</div>
-							<!-- End Style Options -->
+					<div class="modal-header">
+						<span class="modal-label">Column Options</span>
+						<div class="modal-close">
+							<span class="screen-reader-text">Close</span>
+							<span class="tb-close-icon"></span>
 						</div>
 					</div>
-				</div>
+					<div class="modal-inner">
+		
+						<!-- Desktop Layout -->
+						<div class="acf-section-styles-box-model desktop">
 
+							<!-- Margin -->
+							<div class="acf-section-styles-margin">
+								
+								<div class="acf-label">
+									<label for="<?php echo $field['id']; ?>_desktop_margin"><?php _e( 'Desktop Margin', 'acf-section_styles' ); ?></label>
+								</div>
+								<ul class="pb-control-group linked">
+									<li>
+										<label>Top</label>
+										<input type="number" class="margin top" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[desktop_margin_top]" value="<?php if ( !empty( $field['value']['desktop_margin_top'] ) ) echo $field['value']['desktop_margin_right']; ?>" />
+									</li>
+									<li>
+										<label>Right</label>
+										<input type="number" class="margin right" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[desktop_margin_right]" value="<?php if ( !empty( $field['value']['desktop_margin_top'] ) ) echo $field['value']['desktop_margin_right']; ?>" />
+									</li>
+									<li>
+										<label>Bottom</label>
+										<input type="number" class="margin bottom" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[desktop_margin_bottom]" value="<?php if ( !empty( $field['value']['desktop_margin_top'] ) ) echo $field['value']['desktop_margin_bottom']; ?>" />
+									</li>
+									<li>
+										<label>Left</label>
+										<input type="number" class="margin left" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[desktop_margin_left]" value="<?php if ( !empty( $field['value']['desktop_margin_top'] ) ) echo $field['value']['desktop_margin_left']; ?>" />
+									</li>
+									<li>
+										<label>Link</label>
+										<span class="control-button linked"><span class="dashicons dashicons-admin-links"></span><span class="dashicons dashicons-editor-unlink"></span></span>
+									</li>
+								</ul>
+
+							</div> 
+							<!-- End Margin -->
+
+							<!-- Padding -->
+							<div class="acf-section-styles-padding">
+								
+								<div class="acf-label">
+									<label for="<?php echo $field['id']; ?>_desktop_padding"><?php _e( 'Desktop Padding', 'acf-section_styles' ); ?></label>
+								</div>
+								<ul class="pb-control-group linked">
+									<li>
+										<label>Top</label>
+										<input type="number" class="padding top" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[desktop_padding_top]" value="<?php if ( !empty( $field['value']['desktop_padding_top'] ) ) echo $field['value']['desktop_padding_right']; ?>" />
+									</li>
+									<li>
+										<label>Right</label>
+										<input type="number" class="padding right" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[desktop_padding_right]" value="<?php if ( !empty( $field['value']['desktop_padding_top'] ) ) echo $field['value']['desktop_padding_right']; ?>" />
+									</li>
+									<li>
+										<label>Bottom</label>
+										<input type="number" class="padding bottom" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[desktop_padding_bottom]" value="<?php if ( !empty( $field['value']['desktop_padding_top'] ) ) echo $field['value']['desktop_padding_bottom']; ?>" />
+									</li>
+									<li>
+										<label>Left</label>
+										<input type="number" class="padding left" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[desktop_padding_left]" value="<?php if ( !empty( $field['value']['desktop_padding_top'] ) ) echo $field['value']['desktop_padding_left']; ?>" />
+									</li>
+									<li>
+										<label>Link</label>
+										<span class="control-button linked"><span class="dashicons dashicons-admin-links"></span><span class="dashicons dashicons-editor-unlink"></span></span>
+									</li>
+								</ul>
+
+							</div> 
+							<!-- End Padding -->
+
+						</div>
+						<!-- End Desktop Layout -->
+
+						<!-- Tablet Layout -->
+						<div class="acf-section-styles-box-model tablet">
+
+							<!-- Margin -->
+							<div class="acf-section-styles-margin">
+								
+								<div class="acf-label">
+									<label for="<?php echo $field['id']; ?>_tablet_margin"><?php _e( 'Tablet Margin', 'acf-section_styles' ); ?></label>
+								</div>
+								<ul class="pb-control-group linked">
+									<li>
+										<label>Top</label>
+										<input type="number" class="margin top" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[tablet_margin_top]" value="<?php if ( !empty( $field['value']['tablet_margin_top'] ) ) echo $field['value']['tablet_margin_right']; ?>" />
+									</li>
+									<li>
+										<label>Right</label>
+										<input type="number" class="margin right" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[tablet_margin_right]" value="<?php if ( !empty( $field['value']['tablet_margin_top'] ) ) echo $field['value']['tablet_margin_right']; ?>" />
+									</li>
+									<li>
+										<label>Bottom</label>
+										<input type="number" class="margin bottom" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[tablet_margin_bottom]" value="<?php if ( !empty( $field['value']['tablet_margin_top'] ) ) echo $field['value']['tablet_margin_bottom']; ?>" />
+									</li>
+									<li>
+										<label>Left</label>
+										<input type="number" class="margin left" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[tablet_margin_left]" value="<?php if ( !empty( $field['value']['tablet_margin_top'] ) ) echo $field['value']['tablet_margin_left']; ?>" />
+									</li>
+									<li>
+										<label>Link</label>
+										<span class="control-button linked"><span class="dashicons dashicons-admin-links"></span><span class="dashicons dashicons-editor-unlink"></span></span>
+									</li>
+								</ul>
+
+							</div> 
+							<!-- End Margin -->
+
+							<!-- Padding -->
+							<div class="acf-section-styles-padding">
+								
+								<div class="acf-label">
+									<label for="<?php echo $field['id']; ?>_tablet_padding"><?php _e( 'Tablet Padding', 'acf-section_styles' ); ?></label>
+								</div>
+								<ul class="pb-control-group linked">
+									<li>
+										<label>Top</label>
+										<input type="number" class="padding top" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[tablet_padding_top]" value="<?php if ( !empty( $field['value']['tablet_padding_top'] ) ) echo $field['value']['tablet_padding_right']; ?>" />
+									</li>
+									<li>
+										<label>Right</label>
+										<input type="number" class="padding right" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[tablet_padding_right]" value="<?php if ( !empty( $field['value']['tablet_padding_top'] ) ) echo $field['value']['tablet_padding_right']; ?>" />
+									</li>
+									<li>
+										<label>Bottom</label>
+										<input type="number" class="padding bottom" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[tablet_padding_bottom]" value="<?php if ( !empty( $field['value']['tablet_padding_top'] ) ) echo $field['value']['tablet_padding_bottom']; ?>" />
+									</li>
+									<li>
+										<label>Left</label>
+										<input type="number" class="padding left" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[tablet_padding_left]" value="<?php if ( !empty( $field['value']['tablet_padding_top'] ) ) echo $field['value']['tablet_padding_left']; ?>" />
+									</li>
+									<li>
+										<label>Link</label>
+										<span class="control-button linked"><span class="dashicons dashicons-admin-links"></span><span class="dashicons dashicons-editor-unlink"></span></span>
+									</li>
+								</ul>
+
+							</div> 
+							<!-- End Padding -->
+
+						</div>
+						<!-- End Tablet Layout -->
+
+						<!-- Mobile Layout -->
+						<div class="acf-section-styles-box-model mobile">
+
+							<!-- Margin -->
+							<div class="acf-section-styles-margin">
+								
+								<div class="acf-label">
+									<label for="<?php echo $field['id']; ?>_mobile_margin"><?php _e( 'Mobile Margin', 'acf-section_styles' ); ?></label>
+								</div>
+								<ul class="pb-control-group linked">
+									<li>
+										<label>Top</label>
+										<input type="number" class="margin top" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[mobile_margin_top]" value="<?php if ( !empty( $field['value']['mobile_margin_top'] ) ) echo $field['value']['mobile_margin_right']; ?>" />
+									</li>
+									<li>
+										<label>Right</label>
+										<input type="number" class="margin right" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[mobile_margin_right]" value="<?php if ( !empty( $field['value']['mobile_margin_top'] ) ) echo $field['value']['mobile_margin_right']; ?>" />
+									</li>
+									<li>
+										<label>Bottom</label>
+										<input type="number" class="margin bottom" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[mobile_margin_bottom]" value="<?php if ( !empty( $field['value']['mobile_margin_top'] ) ) echo $field['value']['mobile_margin_bottom']; ?>" />
+									</li>
+									<li>
+										<label>Left</label>
+										<input type="number" class="margin left" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[mobile_margin_left]" value="<?php if ( !empty( $field['value']['mobile_margin_top'] ) ) echo $field['value']['mobile_margin_left']; ?>" />
+									</li>
+									<li>
+										<label>Link</label>
+										<span class="control-button linked"><span class="dashicons dashicons-admin-links"></span><span class="dashicons dashicons-editor-unlink"></span></span>
+									</li>
+								</ul>
+
+							</div> 
+							<!-- End Margin -->
+
+							<!-- Padding -->
+							<div class="acf-section-styles-padding">
+								
+								<div class="acf-label">
+									<label for="<?php echo $field['id']; ?>_mobile_padding"><?php _e( 'Mobile Padding', 'acf-section_styles' ); ?></label>
+								</div>
+								<ul class="pb-control-group linked">
+									<li>
+										<label>Top</label>
+										<input type="number" class="padding top" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[mobile_padding_top]" value="<?php if ( !empty( $field['value']['mobile_padding_top'] ) ) echo $field['value']['mobile_padding_right']; ?>" />
+									</li>
+									<li>
+										<label>Right</label>
+										<input type="number" class="padding right" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[mobile_padding_right]" value="<?php if ( !empty( $field['value']['mobile_padding_top'] ) ) echo $field['value']['mobile_padding_right']; ?>" />
+									</li>
+									<li>
+										<label>Bottom</label>
+										<input type="number" class="padding bottom" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[mobile_padding_bottom]" value="<?php if ( !empty( $field['value']['mobile_padding_top'] ) ) echo $field['value']['mobile_padding_bottom']; ?>" />
+									</li>
+									<li>
+										<label>Left</label>
+										<input type="number" class="padding left" placeholder="&ndash;" name="<?php echo esc_attr($field['name']) ?>[mobile_padding_left]" value="<?php if ( !empty( $field['value']['mobile_padding_top'] ) ) echo $field['value']['mobile_padding_left']; ?>" />
+									</li>
+									<li>
+										<label>Link</label>
+										<span class="control-button linked"><span class="dashicons dashicons-admin-links"></span><span class="dashicons dashicons-editor-unlink"></span></span>
+									</li>
+								</ul>
+
+							</div> 
+							<!-- End Padding -->
+
+						</div>
+						<!-- End Mobile Layout -->
+
+					</div>
+				</div>
 			</div> <!-- End .acf-section-styles-container -->
 		<?php
 		}
@@ -551,7 +650,7 @@ if ( !class_exists('acf_field_section_styles') ) :
 		*  @return	n/a
 		*/
 
-		function input_admin_enqueue_scripts() {
+		/*function input_admin_enqueue_scripts() {
 
 			// vars
 			$url = $this->settings['url'];
@@ -567,7 +666,7 @@ if ( !class_exists('acf_field_section_styles') ) :
 			wp_register_style( 'acf-input-section_styles', "{$url}assets/css/input.css", array('acf-input'), $version );
 			wp_enqueue_style('acf-input-section_styles');
 
-		}	
+		}	*/
 
 		/*
 		*  format_value()

@@ -10,10 +10,10 @@ $.fn.chunk = function(size) {
     return this.pushStack(arr, "chunk", size);
 }
 //Split clones.
-$('#page-builder > .acf-input > .acf-flexible-content > .clones > .layout > .acf-fields > .acf-field').chunk(2).wrap( '<div class="pb-column"><div class="pb-column-inner"></div></div>' );
+$('#page-builder > .acf-input > .acf-flexible-content > .clones > .layout > .acf-fields > .acf-field').not('.acf-field-section-styles').chunk(2).wrap( '<div class="pb-column"><div class="pb-column-inner"></div></div>' );
 
 //Split existing fields.
-$('#page-builder > .acf-input > .acf-flexible-content > .values > .layout > .acf-fields > .acf-field').chunk(2).wrap( '<div class="pb-column"><div class="pb-column-inner"></div></div>' );
+$('#page-builder > .acf-input > .acf-flexible-content > .values > .layout > .acf-fields > .acf-field').not('.acf-field-section-styles').chunk(2).wrap( '<div class="pb-column"><div class="pb-column-inner"></div></div>' );
 
 /*//Select cols to wrap
 columnsToWrap   = $('.pb-column');

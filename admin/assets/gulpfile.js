@@ -43,7 +43,7 @@ gulp.task('serve', ['js','sass'], function() {
 
     browserSync.init({
         port: 3004,
-        proxy: "localhost/blag-new-wp/"
+        proxy: "localhost/bm-page-builder/"
     });
 
     // add browserSync.reload to the tasks array to make

@@ -41,10 +41,10 @@ jQuery(document).ready(function($){
         return this.pushStack(arr, "chunk", size);
     }
     //Split clones.
-    $('#page-builder > .acf-input > .acf-flexible-content > .clones > .layout > .acf-fields > .acf-field').not('.acf-field-section-options').chunk(2).wrap( '<div class="pb-column"><div class="pb-column-inner"></div></div>' );
+    $('#page-builder > .acf-input > .acf-flexible-content > .clones > .layout > .acf-fields > .acf-field').not('.acf-field-section-styles').chunk(2).wrap( '<div class="pb-column"><div class="pb-column-inner"></div></div>' );
 
     //Split existing fields.
-    $('#page-builder > .acf-input > .acf-flexible-content > .values > .layout > .acf-fields > .acf-field').not('.acf-field-section-options').chunk(2).wrap( '<div class="pb-column"><div class="pb-column-inner"></div></div>' );
+    $('#page-builder > .acf-input > .acf-flexible-content > .values > .layout > .acf-fields > .acf-field').not('.acf-field-section-styles').chunk(2).wrap( '<div class="pb-column"><div class="pb-column-inner"></div></div>' );
     
     //Select cols to wrap
     columnsToWrap   = $('.pb-column');
@@ -287,4 +287,15 @@ jQuery(document).ready(function($){
             $(this).hide();
         }
     })*/
+
+    $("#poststuff .pb-control-group input").on("input", function() {
+        if ($(this).closest('ul.pb-control-group').hasClass('linked')) {
+            $(this).closest('ul.pb-control-group').find('input').val(this.value);
+        }
+    });
+
+    $("#poststuff .control-button").on("click", function() {
+        $(this).toggleClass('linked');
+        $(this).closest('ul.pb-control-group').toggleClass('linked');
+    });
 });
