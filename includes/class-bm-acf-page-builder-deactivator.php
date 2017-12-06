@@ -4,7 +4,7 @@
  * Fired during plugin deactivation
  *
  * @link       http://bang-media.com
- * @since      1.0.0
+ * @since      1.0.1
  *
  * @package    Bm_Acf_Page_Builder
  * @subpackage Bm_Acf_Page_Builder/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      1.0.0
+ * @since      1.0.1
  * @package    Bm_Acf_Page_Builder
  * @subpackage Bm_Acf_Page_Builder/includes
  * @author     Neil Day <neil@bang-media.com>
@@ -27,7 +27,7 @@ class Bm_Acf_Page_Builder_Deactivator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public static function deactivate() {
 

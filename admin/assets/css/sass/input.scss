@@ -1,5 +1,10 @@
+$base_color: #ddd;
+$highlight_color: #0085ba;
+$heading_color: #444;
+
 @import '_grid.scss';
 @import '_modals.scss';
 @import '_column-options.scss';
 @import '_section-styles.scss';
+@import '_typography.scss';
 //@import '_typography.scss';

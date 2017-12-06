@@ -7,7 +7,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       http://bang-media.com
- * @since      1.0.0
+ * @since      1.0.1
  *
  * @package    Bm_Acf_Page_Builder
  * @subpackage Bm_Acf_Page_Builder/includes
@@ -22,7 +22,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      1.0.1
  * @package    Bm_Acf_Page_Builder
  * @subpackage Bm_Acf_Page_Builder/includes
  * @author     Neil Day <neil@bang-media.com>
@@ -33,7 +33,7 @@ class Bm_Acf_Page_Builder {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   protected
 	 * @var      Bm_Acf_Page_Builder_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
@@ -42,7 +42,7 @@ class Bm_Acf_Page_Builder {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
@@ -51,7 +51,7 @@ class Bm_Acf_Page_Builder {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -64,12 +64,12 @@ class Bm_Acf_Page_Builder {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function __construct() {
 
 		$this->plugin_name = 'bm-acf-page-builder';
-		$this->version = '1.0.0';
+		$this->version = '1.0.1';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -91,7 +91,7 @@ class Bm_Acf_Page_Builder {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -129,7 +129,7 @@ class Bm_Acf_Page_Builder {
 	 * Uses the Bm_Acf_Page_Builder_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -144,18 +144,29 @@ class Bm_Acf_Page_Builder {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Bm_Acf_Page_Builder_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'acf/input/admin_head', 	$plugin_admin, 'enqueue_styles' );
+		$this->loader->add_action( 'acf/input/admin_head', 	$plugin_admin, 'enqueue_scripts' );
+
+		$this->loader->add_action( 'admin_enqueue_scripts', 	$plugin_admin, 'enqueue_global_scripts' );
+
+		//Register plugin options
+		$this->loader->add_action( 'plugins_loaded',			$plugin_admin, 'register_page_builder_options');
 
 		//Load new ACF Fields
-		$this->loader->add_action( 'acf/include_field_types', 	$plugin_admin, 'include_field_types');
+		//$this->loader->add_action( 'acf/include_field_types', 	$plugin_admin, 'include_field_types');
+
+		//Load TypeKit
+		//$this->loader->add_action( 'admin_print_scripts', 		$plugin_admin, 'admin_typekit' );
+
+		//Update colorpickers
+		$this->loader->add_action( 'acf/input/admin_head', 		$plugin_admin, 'change_acf_color_picker', 99 );
 
 	}
 
@@ -163,22 +174,24 @@ class Bm_Acf_Page_Builder {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function define_public_hooks() {
 
 		$plugin_public = new Bm_Acf_Page_Builder_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', 	$plugin_public, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', 	$plugin_public, 'enqueue_scripts' );
+
+		$this->loader->add_action( 'init', 					$plugin_public, 'load_template_functions' );
 
 	}
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function run() {
 		$this->loader->run();
@@ -188,7 +201,7 @@ class Bm_Acf_Page_Builder {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
+	 * @since     1.0.1
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
@@ -198,7 +211,7 @@ class Bm_Acf_Page_Builder {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     1.0.1
 	 * @return    Bm_Acf_Page_Builder_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -208,7 +221,7 @@ class Bm_Acf_Page_Builder {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     1.0.1
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {

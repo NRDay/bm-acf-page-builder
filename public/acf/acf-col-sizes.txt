@@ -1,0 +1,39 @@
+col-mobile-1 : 1
+col-mobile-2 : 2
+col-mobile-3 : 3
+col-mobile-4 : 4
+col-mobile-5 : 5
+col-mobile-6 : 6
+col-mobile-7 : 7
+col-mobile-8 : 8
+col-mobile-9 : 9
+col-mobile-10 : 10
+col-mobile-11 : 11
+col-mobile-12 : 12
+
+col-tablet-1 : 1
+col-tablet-2 : 2
+col-tablet-3 : 3
+col-tablet-4 : 4
+col-tablet-5 : 5
+col-tablet-6 : 6
+col-tablet-7 : 7
+col-tablet-8 : 8
+col-tablet-9 : 9
+col-tablet-10 : 10
+col-tablet-11 : 11
+col-tablet-12 : 12
+
+col-desk-1 : 1
+col-desk-2 : 2
+col-desk-3 : 3
+col-desk-4 : 4
+col-desk-5 : 5
+col-desk-6 : 6
+col-desk-7 : 7
+col-desk-8 : 8
+col-desk-9 : 9
+col-desk-10 : 10
+col-desk-11 : 11
+col-desk-12 : 12
+

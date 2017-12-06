@@ -1,0 +1,8 @@
+.acf-hl[data-cols="5"] > li {
+    width: 20%;
+}
+
+[data-name="margin-wrapper"] .acf-radio-list>li {
+	width: 16.666666666666667%;
+	margin-right: 0!important;
+}

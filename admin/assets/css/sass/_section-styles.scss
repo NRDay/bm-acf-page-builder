@@ -1,23 +1,86 @@
-$border_color: #ddd;
-$highlight_color: #0085ba;
-
 #page-builder {
+	.section-wrapper {
+		text-align: center;
+		border: 1px solid $base_color;
+		border-bottom: none;
+		overflow: visible;
+		header {
+			border-bottom: 1px solid $base_color;
+			h2 {
+				font-size: 1.5rem;
+
+			}
+		}
+	}
+	.acf-pb-section {
+		@extend %clearfix;
+		border-bottom: 1px solid $base_color;
+		.acf-pb-section-header {
+			font-weight: bold;
+			font-size: 16px;
+			border-bottom: 1px solid $base_color;
+			padding: 10px;
+			text-align: left;
+		}
+		.acf-pb-section-inner {
+			padding: 10px;
+			@extend %clearfix;
+			    border-bottom: 1px solid #ddd;
+		}
+		.bm-pb-input-wrap {
+			margin-bottom: 10px;
+		}
+		&.acf-pb-box-model{
+			border-right: 1px solid $base_color;
+		}
+		&.acf-pb-box-model,
+		&.acf-pb-alignment {
+			width: 50%;
+			float: left;
+			box-sizing: border-box;
+		}
+	}
+	.acf-pb-alignment-section {
+		@extend %clearfix;
+		.acf-pb-alignment-section-inner {
+			@extend %clearfix;
+			padding: 10px 0;
+			border-bottom: 1px solid $base_color;
+		}
+		.sub-label {
+			@extend %clearfix;
+			border-bottom: 1px solid $base_color;
+			padding: 10px;
+			font-weight: bold;
+			text-align: left;
+		    label {
+		    	cursor: default;
+		    	margin: 0;
+		    	padding: 10px;
+		    }
+
+		}
+			
+	}
+	.acf-section-styles-border,
 	.acf-section-styles-padding,
 	.acf-section-styles-margin {
 		.acf-label {
 			clear: both;
+			margin-bottom: 10px;
 		}
 		label {
 			cursor: default;
+			clear: both;
 		}
-		input[type="number"] {
+		input {
 			box-sizing: border-box;
 			border-style: none;
-			width: 60px;
+			width: 50px;
 			border-radius: 0;
 			border: 2px solid #ddd;
 			border-right: none;
-			margin-bottom: 16px;
+			margin: 0;
 			&:focus {
 				&.top {
 			    	border-top: 2px solid $highlight_color;
@@ -30,9 +93,14 @@ $highlight_color: #0085ba;
 			    }
 			    &.left {
 			    	border-left: 2px solid $highlight_color;
-			    	border-right: 2px solid $border_color;
+			    	border-right: 2px solid $base_color;
 			    }
 			}			
+		}
+		.radius {
+			width: 100%;
+			border-right: 2px solid rgb(221, 221, 221);
+			border-radius: 5px;
 		}
 		span {
 			vertical-align: middle;
@@ -41,9 +109,15 @@ $highlight_color: #0085ba;
 	}
 	ul.pb-control-group {
 		text-align: center;
+		margin: 0pt auto;
+		overflow: hidden;
+		font-size: 0;
+		padding-top: 10px;
+		margin-bottom: 10px;
 		li {
-			display: block;
-			float: left;
+			display: inline-block;
+			font-size: 14px;
+			width: 50px;
 			label,
 			.cotrol-button {
 				text-align: center;
@@ -54,18 +128,42 @@ $highlight_color: #0085ba;
 				clear: both;
 				display: block;
 				text-align: center;
+				&::-webkit-inner-spin-button {
+					display: none!important;
+				}
 			}
 			&:first-child {
 				input {
 					border-radius: 10px 0px 0px 10px;
 				}
 			}
+			select.acf-section-styles-margin-unit,
+			select.acf-section-styles-padding-unit {
+				border-radius: 0!important;
+				width: 50px!important;
+				-webkit-appearance: none;
+				margin: 0px;
+				border-radius: 0;
+    			border: 2px solid #ddd;
+    			height: 27px;
+    			margin-bottom: 3px;
+    			padding-left: 8px;
+			}
+		}
+		&.devices {
+			padding: 0 10px;
+			.dashicons {
+				width: 2rem;
+				height: 2rem;
+				font-size: 2rem;
+			}
+			
 		}
 		line-height: 16px;
 		.control-button {
-			width: 60px;
-			text-align: center;
-			height: 24px;
+			width: 50px;
+			height: 17px;
+			padding: 3px 5px;
 			vertical-align: middle;
 			border: 2px solid #ddd;
 			border-radius: 0 10px 10px 0;
@@ -74,12 +172,12 @@ $highlight_color: #0085ba;
 				clear: both;
 				display: block;
 				text-align: center;
-				line-height: 16px;
 			}
 			vertical-align: middle;
 			.dashicons {
+				font-size: 16px;
+				line-height: 18px;
 				vertical-align: middle;
-				line-height: 24px;
 				display: inline-block;
 			}
 			.dashicons-admin-links {
@@ -96,4 +194,86 @@ $highlight_color: #0085ba;
 			}
 		}
 	}
+	.acf-pb-background {
+		label {
+			margin-top: 16px;
+		}
+		.acf-section-styles-background-gradient {
+			padding-bottom: 16px;
+		}
+		.background-sample {
+			width: 100%;
+			height: 200px;
+			clear: both;
+			overflow: hidden;
+			margin-top: 16px;
+		}
+		.wp-picker-holder {
+			z-index: 9999;
+		}
+		.acf-section-styles-background-actual {
+			clear: both;
+			overflow: hidden;
+		}
+		.acf-section-styles-background-parallax {
+			clear: both;
+			overflow: hidden;
+		}
+		.acf-section-styles-background-position-container {
+			overflow: hidden;
+		}
+		.acf-section-styles-background-image-preview-container {
+			display: none;
+		}
+	}
+	
 }
+
+.media-modal {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    z-index: 160099999900;
+}
+
+.acf-section-styles-container {
+	.wp-tab-bar {
+		margin:0px 0 0 0;
+		padding: 0 4px;
+		display: block;
+		li {
+			display: inline-block;
+			padding: 0;
+			margin: 0;
+			border: none;
+			border-right: 1px solid #ddd;
+			a {
+				font-size: 16px;
+				outline: 0 !important;
+				box-shadow: none !important;
+				padding: 8px;
+				display: inline-block;
+			}
+		}
+	}
+	.wp-tab-panel {
+		max-height: 100%;
+		height: auto;
+		padding: 0;
+	}
+	.wp-picker-active {
+		position: absolute;
+		z-index: 9999;
+		position: absolute;
+	    z-index: 9999;
+	    left: 0;
+	    padding: 5px;
+	    background: #fff;
+	    border: 2px solid darken($base_color,10%);
+	    border-radius: 3px;
+
+	}
+}
+		

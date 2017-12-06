@@ -4,7 +4,7 @@
  * The public-facing functionality of the plugin.
  *
  * @link       http://bang-media.com
- * @since      1.0.0
+ * @since      1.0.1
  *
  * @package    Bm_Acf_Page_Builder
  * @subpackage Bm_Acf_Page_Builder/public
@@ -25,7 +25,7 @@ class Bm_Acf_Page_Builder_Public {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -34,7 +34,7 @@ class Bm_Acf_Page_Builder_Public {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -43,7 +43,7 @@ class Bm_Acf_Page_Builder_Public {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -57,7 +57,7 @@ class Bm_Acf_Page_Builder_Public {
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function enqueue_styles() {
 
@@ -74,13 +74,14 @@ class Bm_Acf_Page_Builder_Public {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/bm-acf-page-builder-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name.'vendor', plugin_dir_url( __FILE__ ) . 'css/vendor.min.css', array(), $this->version, 'all' );
 
 	}
 
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function enqueue_scripts() {
 
@@ -96,8 +97,19 @@ class Bm_Acf_Page_Builder_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bm-acf-page-builder-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bm-acf-page-builder-public.min.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( 'vendor', plugin_dir_url( __FILE__ ) . 'js/vendor.min.js', array(), $this->version, false );
 
+	}
+
+	/**
+	 * Register Template Functions
+	 * 
+	 *  @since 1.0.1
+	 */
+
+	public function load_template_functions() {
+		require plugin_dir_path( __FILE__ ) . 'includes/template-functions.php';
 	}
 
 }

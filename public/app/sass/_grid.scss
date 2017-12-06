@@ -1,0 +1,58 @@
+.h-align-content-center {
+	text-align: center;
+}
+
+.v-align-top {
+	vertical-align: top;
+}
+.v-align-middle {
+	vertical-align: middle;
+}
+.v-align-bottom {
+	vertical-align: bottom;
+}
+
+.grid-wrapper {
+	width: 100%;
+	max-width: $max-width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.page-builder-row {
+	@extend .grid-wrapper;
+	position: relative;
+	&.full-width {
+		max-width: 100%;
+		padding: 0;
+		.full-width-inner {
+			width: 100%;
+			max-width: $max-width;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+}
+
+.grid {
+	section {
+		font-size: 20px;
+	}
+	.grid__item {
+		.grid__item-content {
+			padding: $gutter;
+			div[class^="column-element-"] {
+				@extend %clearfix;
+			}
+		}
+	}
+}
+
+.to-animate {
+	opacity: 0;
+	overflow: hidden;
+}
+
+.visible {
+	opacity: 1;
+}

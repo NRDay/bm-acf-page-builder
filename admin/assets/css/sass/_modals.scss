@@ -1,4 +1,26 @@
-
+/* .pb-column {
+    .modal-overlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: none;
+        
+    }
+    &:hover {
+        .modal-overlay {
+            display: block;
+            &:hover {
+                transition: background-color 250ms;
+                background-color: rgba(0,0,0,0.5);
+            }
+            
+            
+        }
+    }
+} */
 //Options Modal
 .acf-pb-options-modal-triggers {
     a {
@@ -22,12 +44,12 @@
         position: fixed !important;
         background: white;
         position: fixed;
-        top: 50px;
-        bottom: 50px;
-        left: 50px;
-        right: 50px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+        top: 0px;
+        bottom: 0px;
+        width: 700px;
+        right: 0px;
         overflow: hidden;
+        box-shadow: -10px 0px 20px 1px rgba(0,0,0,0.3);
         .modal-header {
             display: block;
             position: absolute;
@@ -35,7 +57,7 @@
             left: 0;
             right: 0;
             padding: 0.5rem;
-            background: #fff;
+            background: #efefef;
             border-bottom: 1px solid #ddd;
             z-index: 200071;
             .modal-label {
@@ -48,18 +70,23 @@
             .modal-close {
                 float: right;
                 position: relative;
+                .tb-close-icon {
+                    &:hover {
+                        color: #00a0d2;
+                        cursor: pointer;
+                    }
+                }
             }
         }
         .modal-inner {
             z-index: 200071;
             position: absolute;
             background: white;
-            top: 47px;
+            top: 46px;
             bottom: 42px;
             left: 0;
             right: 0;
             overflow: scroll;
-            padding:  10px;
         }
     }
 }
@@ -82,4 +109,25 @@
 .mce-panel.mce-menu {
     border: 1px solid #ddd;
     z-index: 999999 !important;
+}
+
+body.child-modal-active,
+.child-modal-active .pb-column-inner{
+    overflow: hidden !important;
+}
+
+.option-modal-underlay {
+    display: none;
+}
+
+.option-modal-underlay.modal-active {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    z-index: 100059;
+    background: rgba(0,0,0,0.5);
+    top:  0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }

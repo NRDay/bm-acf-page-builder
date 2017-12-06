@@ -9,27 +9,30 @@ var sass          = require('gulp-sass');
 var minifyCss     = require('gulp-clean-css');
 var sourcemaps    = require('gulp-sourcemaps');
 var autoprefixer  = require('gulp-autoprefixer');
+var bourbon         = require('bourbon-neat').includePaths;
+var neat            = require('node-bourbon').includePaths;
 
 gulp.task('sass', function () {
- return gulp.src('css/sass/**/*.scss')
-  .pipe(sourcemaps.init())
-  .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-  .pipe(minifyCss({compatibility: 'ie8', keepBreaks:false}))
-  .pipe(sourcemaps.write())
-  .pipe(gp_rename('input.min.css'))
-  .pipe(gulp.dest("css/"))
-  .pipe(browserSync.stream());
+    return gulp.src('css/sass/**/*.scss')
+   .pipe(sourcemaps.init())
+   .pipe(sass({
+        includePaths: [].concat(bourbon,neat),
+        outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(minifyCss({compatibility: 'ie8', keepBreaks:false}))
+        .pipe(sourcemaps.write())
+        .pipe(gp_rename('input.min.css'))
+        .pipe(gulp.dest("css/"))
+        .pipe(browserSync.stream());
 });
 
 // process JS files and return the stream.
 gulp.task('js', function () {
     return gulp.src('js/partials/input.js')
-        .pipe(fileinclude({
-		  prefix: '@@',
-		}))
-		.pipe(gp_rename('input.min.js'))
-		.pipe(uglify())
-		.pipe(gulp.dest('js/'))
+    .pipe(fileinclude({
+        prefix: '@@',
+    }))
+    .pipe(gp_rename('input.min.js'))
+    .pipe(gulp.dest('js/'))
 });
 
 // create a task that ensures the `js` task is complete before
@@ -43,7 +46,7 @@ gulp.task('serve', ['js','sass'], function() {
 
     browserSync.init({
         port: 3004,
-        proxy: "localhost/bm-page-builder/"
+        proxy: "http://localhost/investigationservices.co.uk/"
     });
 
     // add browserSync.reload to the tasks array to make

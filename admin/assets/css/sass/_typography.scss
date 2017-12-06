@@ -1,46 +1,98 @@
-.acf-typography-preview .acf-typography-field-label {
-    text-align: left;
-}
-.acf-typography-preview-font {
-    text-align: center;
-    width: 93%;
-    /*display:block;*/
-    padding: 20px;
-    border: solid 1px #ddd;
-    border-radius: 3px;
-    background: #f9f9f9;
-    line-height: 10%;
-}
-.acf-typography-subfield {
-    float: left;
-    width: 33%;
-    margin-bottom: 10px;
-}
-.acf-typography-field-label {
-    font-weight: bold;
-    line-height: 250%;
-}
-.select2-container,
-.acf-typography-field-font-size,
-.acf-typography-field-line-height {
-    display: block;
-    width: 80%;
-}
-.clearfix:before, .clearfix:after {
-    content: " ";
-    display: table;
-}
-.clearfix:after {
-    clear: both;
+
+$base_font_size: 16px;
+$h1_font_size: 36px;
+$h2_font_size: 32px;
+$h3_font_size: 28px;
+$h4_6_font_size: 24px;
+
+
+.bm-pb-typo-tabs {
+    position: relative;
+    .typo-default-switcher {
+        select {
+            margin-left: 10px;
+            width: auto;
+
+        }
+        >.acf-label {
+            margin: 0;
+            label {
+                margin: 0;
+            }
+        }
+    }
+    .acf-pb-section-inner {
+        border-top: 1px solid $base_color;
+        border-bottom: 1px solid $base_color;
+        background: #efefef;
+        position: relative;
+        &.disabled {
+            .disabled-overlay {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba(#efefef,.6);
+            }
+        }
+    }
+    .wp-tab-bar{
+        font-size: 0;
+        a {
+            font-size: 18px!important;
+            line-height: 24px;
+        }
+        
+    }
+    .typo-full-reset {
+        top: 0;
+        right: 10px;
+        line-height: 40px; 
+        font-size: 14px;
+        position: absolute;
+        font-weight: bold;
+        &:hover {
+            color: #00a0d2;
+            cursor: pointer;
+        }
+
+    }
+    .active {
+            background: #efefef;
+        }
 }
 
-.acf-typography-subfield-shadow {
-    float: none;
-    width: 100%;
-    margin-bottom: 10px;
+#page-builder {
+    .bm-pb-acf-typo-preview-container {
+        padding: 10px;
+
+        .bm-pb-acf-typo-preview {
+            @extend %clearfix;
+            border: 4px dashed $base_color;
+            padding: 0 10px 10px 10px;
+            
+            h1 {
+                font-size: $h1_font_size;
+            }
+            h2 {
+                font-size: $h2_font_size;
+            }
+            h3 {
+                font-size: $h3_font_size;
+            }
+            h4 {
+                font-size: $h4_6_font_size;
+            }
+            p,a {
+                font-size: $base_font_size
+            }
+            h1,h2,h3,h4,p,a {
+                line-height: 1.5 !important;
+                margin: 0 0 16px 0 !important;
+                padding: 0 !important;
+            }
+        }
+    }
 }
 
-.acf-typography-subfield-shadow span {
-    display: block;
-    clear: both;
-}

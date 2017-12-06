@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              http://bang-media.com
- * @since             1.0.0
+ * @since             1.0.1
  * @package           Bm_Acf_Page_Builder
  *
  * @wordpress-plugin
  * Plugin Name:       BM ACF Page Builder
  * Plugin URI:        http://bang-media.com
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Neil Day
  * Author URI:        http://bang-media.com
  * License:           GPL-2.0+
@@ -64,7 +64,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-bm-acf-page-builder.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    1.0.1
  */
 function run_bm_acf_page_builder() {
 
@@ -73,3 +73,5 @@ function run_bm_acf_page_builder() {
 
 }
 run_bm_acf_page_builder();
+
+require_once plugin_dir_path( __FILE__ ) . 'admin/acf/fields/acf-section_styles-v5.php';
