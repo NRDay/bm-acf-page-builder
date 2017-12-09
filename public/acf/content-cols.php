@@ -72,8 +72,9 @@ if ( $section_options['show_alignment'] === 'yes' ) {
 
 				$parallax_data = '';
 				if ($responsive['background_style'] == 'parallax') {
-					$img_url = $responsive['background_image']['url'];
-					$parallax_data = 'data-parallax="scroll" data-image-src="'.$img_url.'"';
+					$img_id = $responsive['background_image'];
+					$img_url = wp_get_attachment_image_src( $img_id, 'full');
+					$parallax_data = 'data-parallax="scroll" data-image-src="'.$img_url[0].'"';
 				}
 
 				// Get Alignment options
