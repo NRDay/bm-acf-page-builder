@@ -51,7 +51,7 @@ if ( $section_options['show_alignment'] === 'yes' ) {
 
 ?>
 <section id="pb-section-<?php echo $section_id;?>" class="page-builder-row<? echo $section_classes;?>"<?php echo $parallax_data; ?>>
-	
+	<div class="parallax-overlay"></div>
 	<?php if ($section_options['make_full_width'] === 'yes' ) {
 		echo '<div class="full-width-inner">';
 	}?>
@@ -89,6 +89,7 @@ if ( $section_options['show_alignment'] === 'yes' ) {
 					
 					<div class="grid__item column-<?php echo $acf_pb_counter.'-'.$column_count.$responsive_classes;?>">
 						<div class="grid__item-content"<?php echo $parallax_data; ?>>
+							<div class="parallax-overlay"></div>
 							<?php 
 							
 							while ( have_rows($acf_pb_prefix.$value.'_elements_elements') ) : the_row();	

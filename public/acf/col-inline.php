@@ -31,6 +31,10 @@ foreach ($acf_pb_layouts as $key => $value) {
 	// end element id
 	$inline_css .= "}";
 
+	if ( $row_name['background_style'] === 'parallax') {
+		$inline_css .= '#pb-section-page-'.$acf_pb_styles_counter.' .grid__item.column-'.$acf_pb_styles_counter.'-'.$value.' .grid__item-content .parallax-overlay { background:'.$row_name['background_parallax'].';}';
+	}
+
 	//Element Styles.
 	if( have_rows($acf_pb_prefix.$value.'_elements_elements') ): 
 		$element_count = 0; //Counter so we can give each element in the column a unique class

@@ -40,9 +40,11 @@
 	}
 	.grid__item {
 		.grid__item-content {
+			position: relative;
 			padding: $gutter;
 			div[class^="column-element-"] {
 				@extend %clearfix;
+				position: relative;
 			}
 		}
 	}
@@ -55,4 +57,12 @@
 
 .visible {
 	opacity: 1;
+}
+
+.parallax-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }

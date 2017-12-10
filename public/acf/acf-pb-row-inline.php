@@ -49,6 +49,10 @@ $inline_css .= $animation;
 // end element id
 $inline_css .= '}';
 
+if ( $section_options['background_style'] === 'parallax') {
+    $inline_css .= '#pb-section-page-'.$acf_pb_styles_counter.' > .parallax-overlay { background:'.$section_options['background_parallax'].';}';
+}
+
 //media queries
 $inline_css .= 
 '@media only screen and (min-width: 48em) {

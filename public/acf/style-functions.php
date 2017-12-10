@@ -2,13 +2,8 @@
 
 function background_styles($row_name) {
 	$background = '';
-	if ( $row_name['background_style'] === 'parallax') {
-		$background .= 'background: '.$row_name['background_parallax'].';';;
-	} else {
-		if ( !empty($row_name['background_actual']) ) {
-			$background .= 'background: '.$row_name['background_actual'].';';
-		}
-		
+	if ( $row_name['background_style'] !== 'parallax' && !empty($row_name['background_actual']) ) {
+		$background .= 'background: '.$row_name['background_actual'].';';
 	}
 
 	return $background;
