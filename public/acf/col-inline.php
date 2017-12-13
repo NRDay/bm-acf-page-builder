@@ -13,9 +13,6 @@ foreach ($acf_pb_layouts as $key => $value) {
 	// element id
 	$inline_css .= "#pb-section-page-{$acf_pb_styles_counter} .grid__item.column-{$acf_pb_styles_counter}-{$value} .grid__item-content { ";
 
-	$background_styles = background_styles($row_name);
-	$inline_css .= $background_styles;
-
 	$margin = margin_styles($row_name);
 
 	$inline_css .= $margin;
@@ -30,6 +27,17 @@ foreach ($acf_pb_layouts as $key => $value) {
 
 	// end element id
 	$inline_css .= "}";
+
+	if ( !empty($row_name['background_actual']) ) {
+		$inline_css .= "#pb-section-page-{$acf_pb_styles_counter} .grid__item.column-{$acf_pb_styles_counter}-{$value} .grid__item-content [class^='column-element-'] { ";
+
+			$background_styles = background_styles($row_name);
+			$inline_css .= $background_styles;
+			$inline_css .= "padding:16px;";
+			// end element id
+			$inline_css .= "}";
+
+	}
 
 	if ( $row_name['background_style'] === 'parallax') {
 		$inline_css .= '#pb-section-page-'.$acf_pb_styles_counter.' .grid__item.column-'.$acf_pb_styles_counter.'-'.$value.' .grid__item-content .parallax-overlay { background:'.$row_name['background_parallax'].';}';

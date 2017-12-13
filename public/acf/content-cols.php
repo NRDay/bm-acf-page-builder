@@ -29,7 +29,7 @@ $animation_data_add = '';
 $animation_data_remove = '';
 if ($section_options['animation_type'] !== 'none' ) {
 	$animation_classes .=	' to-animate hidden animated';
-	$animation_data_add = ' data-vp-add-class="'.$section_options['animation_type'].' visible"';
+	$animation_data_add = ' data-vp-add-class="'.$section_options['animation_type'].' visible" data-vp-offset="200"';
 	$animation_data_remove = ' data-vp-remove-class="hidden"';
 }
 
