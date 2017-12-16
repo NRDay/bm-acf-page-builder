@@ -38,10 +38,6 @@ $padding = padding_styles($section_options);
 
 $inline_css .= $padding;
 
-$border = border_styles($section_options);
-
-$inline_css .= $border;
-
 $animation = animation_styles($section_options);
 
 $inline_css .= $animation;

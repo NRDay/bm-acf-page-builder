@@ -25,6 +25,7 @@
 	max-width: $max-width;
 	margin-left: auto;
 	margin-right: auto;
+	padding: 0 $gutter;
 }
 
 .page-builder-row {
@@ -38,18 +39,16 @@
 			max-width: $max-width;
 			margin-left: auto;
 			margin-right: auto;
+			padding: 0 $gutter;
 		}
 	}
 }
 
 .grid {
-	section {
-		font-size: 20px;
-	}
+
 	.grid__item {
 		.grid__item-content {
 			position: relative;
-			padding: $gutter;
 			div[class^="column-element-"] {
 				@extend %clearfix;
 				position: relative;

@@ -90,19 +90,21 @@ if ( $section_options['show_alignment'] === 'yes' ) {
 					<div class="grid__item column-<?php echo $acf_pb_counter.'-'.$column_count.$responsive_classes;?>">
 						<div class="grid__item-content"<?php echo $parallax_data; ?>>
 							<div class="parallax-overlay"></div>
-							<?php 
-							
-							while ( have_rows($acf_pb_prefix.$value.'_elements_elements') ) : the_row();	
+							<div class="column-inner">
+								<?php 
 								
+								while ( have_rows($acf_pb_prefix.$value.'_elements_elements') ) : the_row();	
+									
+									if (locate_template('bm-acf-pb-layouts/acf-'. get_row_layout() .'.php') != '') {
+										include(locate_template('bm-acf-pb-layouts/acf-'. get_row_layout() .'.php'));
+									}									
 
-								$file = get_row_layout();
-								include(locate_template('bm-acf-pb-layouts/acf-'. get_row_layout() .'.php'));
+									//Increment element count
+									$element_count++;
 
-								//Increment element count
-								$element_count++;
-
-						    endwhile; 
-						    ?>
+							    endwhile; 
+							    ?>
+							</div>
 						</div>
 					</div>
 

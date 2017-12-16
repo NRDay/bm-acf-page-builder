@@ -33,13 +33,21 @@ function padding_styles($row_name) {
 		$unit = $row_name['padding_unit'];
 
 		$padding = '';
-		if ( strlen($row_name['padding_top']) > 0 ) {$padding .= 'padding-top: '.$row_name['padding_top'].$unit.';'; }
+		if ( strlen($row_name['padding_top']) > 0 ) {
+			$padding .= 'padding-top: '.$row_name['padding_top'].$unit.';'; 
+		} 
 
-		if ( strlen($row_name['padding_right']) > 0 ) {$padding .= 'padding-right: '.$row_name['padding_right'].$unit.';'; }
+		if ( strlen($row_name['padding_right']) > 0 ) {
+			$padding .= 'padding-right: '.$row_name['padding_right'].$unit.';'; 
+		}
 
-		if ( strlen($row_name['padding_bottom']) > 0 ) {$padding .= 'padding-bottom: '.$row_name['padding_bottom'].$unit.';'; }
+		if ( strlen($row_name['padding_bottom']) > 0 ) {
+			$padding .= 'padding-bottom: '.$row_name['padding_bottom'].$unit.';'; 
+		}
 
-		if ( strlen($row_name['padding_left']) > 0 ) {$padding .= 'padding-left: '.$row_name['padding_left'].$unit.';'; }
+		if ( strlen($row_name['padding_left']) > 0 ) {
+			$padding .= 'padding-left: '.$row_name['padding_left'].$unit.';'; 
+		}
 
 		return $padding;
 
@@ -95,7 +103,7 @@ function typography_styles($prefix,$row_name) {
 
 }
 
-function border_styles($row_name) {
+/*function border_styles($row_name) {
 
 	if ($row_name['show_border'] === 'yes') {
 
@@ -148,7 +156,7 @@ function border_styles($row_name) {
 		}
 
 	}
-}
+}*/
 
 function animation_styles($row_name) {
 	$animation_duration = '1000ms';
